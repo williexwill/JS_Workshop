@@ -32,6 +32,7 @@ p {
     align-items: center;
     width: 50%;
     margin: 0 auto;
+    padding: 2%;
     color: rgb(255, 230, 204);
 }
 
@@ -44,5 +45,13 @@ p {
     align-items: center;
     width: 50%;
     margin: 0 auto;
+    padding: 2%;
     color: rgb(255, 230, 204);
+}
+
+#img1 {
+  border-radius: 25px;
+  background: #ffffff;
+  padding: 20px;
+  width: 50%;
 }
