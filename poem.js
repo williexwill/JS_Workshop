@@ -1,9 +1,7 @@
-//Part 1 - Define the extra information section for the poem
 $("#info").html("<p>Extra info will go here.</p>");
 
-// Part 2 - Display the first line of the poem and access info from the poem object if it exists
-$.getJSON("poem.json", function(data){ // data variable is the JSON object
-    let poemText; // Define a new variable to hold all text
+$.getJSON("poem.json", function(data){ 
+    let poemText; 
     poemText = "<blockquote><p>"; 
     
     data.lines.map(function(line){ 
@@ -20,8 +18,10 @@ $.getJSON("poem.json", function(data){ // data variable is the JSON object
             };
 
             if (word.link){
-                    wordString = "<a href='#' data-info='" + word.info + "' data-link='" + word.link + "' >" + wordString + "</a>";
-                    };
+                    // wordString = "<a href='#' data-info='" + word.info + "' data-link='" + word.link + "' >" + word.text + "</a>";
+                    // };
+                    wordString = "<a href='#' data-info='" + word.info + "' data-link= '<a href= " + word.link + ">" + word.link + "</a>'>" + word.text + "</a>";
+                };
                         
             lineText = lineText + wordString + " ";
             });
@@ -40,7 +40,7 @@ $.getJSON("poem.json", function(data){ // data variable is the JSON object
     clickedLink = $( this ).data("link") || "";
     console.log(clickedLink);
     console.log(clickedInfo);
-    infoText = clickedInfo + clickedLink;
+    infoText = clickedInfo + "<br/>" + clickedLink;
     $("#info").html(infoText);
     });
 });
