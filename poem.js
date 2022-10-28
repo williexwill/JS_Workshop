@@ -6,32 +6,25 @@ $.getJSON("poem.json", function(data){ // data variable is the JSON object
     let poemText; // Define a new variable to hold all text
     poemText = "<blockquote><p>"; 
     
-    data.lines.map(function(line){ // We get a variable, line
-      // Define a blank lineText.
+    data.lines.map(function(line){ 
         let lineText = "";
         line.map(function(word){
+            console.log(word.text);
             let wordString;
-            wordString = word.text;
+            if (word.text) {
+                wordString = word.text;
+              };
+            
             if (word.info){
-              wordString = "<a href='#' data-info='" + word.info + "'>" + wordString + "</a>";
+              wordString = "<a href='#' data-info='" + word.info + "'>" + word.text + "</a>";
             };
 
-            // if (word.data){
-            //         wordString = "<a href='#' data-info='" + word.info + "' data-link='" + word.link "'>" + wordString + "</a>";
-            //         };
+            if (word.link){
+                    wordString = "<a href='#' data-info='" + word.info + "' data-link='" + word.link + "' >" + wordString + "</a>";
+                    };
                         
             lineText = lineText + wordString + " ";
             });
-            
-        // line.map(function(word){
-        //     let wordString;
-        //     wordString = word.text;
-        //     if (word.data){
-        //         wordString = "<a href='#' data-info='" + word.info + "' data-link='" + word.link "'>" + wordString + "</a>";
-        //         };
-                            
-        //         lineText = lineText + wordString + " ";
-        //         });
 
         poemText = poemText + lineText + "<br/>";
         });
@@ -44,7 +37,9 @@ $.getJSON("poem.json", function(data){ // data variable is the JSON object
     let infoText, clickedWord, clickedInfo, clickedLink; 
     clickedWord = $( this ).text();
     clickedInfo = $( this ).data("info");
-    clickedLink = $( this ).data("link");
+    clickedLink = $( this ).data("link") || "";
+    console.log(clickedLink);
+    console.log(clickedInfo);
     infoText = clickedInfo + clickedLink;
     $("#info").html(infoText);
     });
