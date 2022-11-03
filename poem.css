@@ -24,3 +24,7 @@ p {
     font-family: 'Georgia';
     white-space: pre-line;
   }
+
+  #map {
+    height: 400px;
+  }

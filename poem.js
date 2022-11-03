@@ -7,7 +7,7 @@ $.getJSON("poem.json", function(data){
     data.lines.map(function(line){ 
         let lineText = "";
         line.map(function(word){
-            console.log(word.text);
+            //console.log(word.text);
             let wordString;
             if (word.text) {
                 wordString = word.text;
